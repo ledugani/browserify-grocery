@@ -1,11 +1,9 @@
 const loadDepartments = require('./departments');
-const printToDom = require('./dom');
-
-let departmentArray = [];
+const departmentDom = require('./departmentDom');
 
 const departmentSuccess = function () {
-  departmentArray = JSON.parse(this.responseText).departments;
-  printToDom(departmentArray);
+  const data = JSON.parse(this.responseText).departments;
+  departmentDom(data);
 };
 
 const departmentMalfunction = function () {
@@ -16,11 +14,6 @@ const initializer = () => {
   loadDepartments(departmentSuccess, departmentMalfunction);
 };
 
-const getDepartments = () => {
-  return departmentArray;
-};
-
 module.exports = {
   initializer,
-  getDepartments,
 };

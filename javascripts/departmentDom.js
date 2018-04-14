@@ -14,9 +14,9 @@ const domString = (departments) => {
 };
 
 // print to dom function
-const printToDom = (departments) => {
+const printToDepartmentDom = (departments) => {
   departmentOutputDiv.innerHTML = domString(departments);
   events.addDepartmentEvents();
 };
 
-module.exports = printToDom;
+module.exports = printToDepartmentDom;
