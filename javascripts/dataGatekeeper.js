@@ -1,6 +1,12 @@
 const loadDepartments = require('./departments');
+const loadItems = require('./items');
 const departmentDom = require('./departmentDom');
 const data = require('./data');
+
+const whenItemsLoad = function () {
+  const itemsData = JSON.parse(this.responseText).items;
+  console.log('itemsData', itemsData);
+};
 
 const departmentSuccess = function () {
   const departmentsData = JSON.parse(this.responseText).departments;
@@ -14,6 +20,7 @@ const departmentMalfunction = function () {
 
 const initializer = () => {
   loadDepartments(departmentSuccess, departmentMalfunction);
+  loadItems(whenItemsLoad, departmentMalfunction);
 };
 
 module.exports = {
